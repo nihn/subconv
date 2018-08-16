@@ -5,10 +5,10 @@ use std::iter::Iterator;
 use std::vec::Vec;
 
 
-pub fn convert(lines: Vec<String>) -> String {
+pub fn convert(lines: Vec<String>, fps: f64) -> String {
     let re = Regex::new(r"\{(\d+)\}\{(\d+)\}(.*)").unwrap();
     let mut new_lines = String::new();
-    let mut rate = 23.375;
+    let mut rate = fps;
 
     for (i, line) in lines.iter().enumerate() {
         let line_str = &line.to_string();
@@ -32,7 +32,7 @@ pub fn convert(lines: Vec<String>) -> String {
         new_lines.push_str("\n");
         new_lines.push_str(&format_time(start, end, rate));
         new_lines.push_str("\n");
-        new_lines.push_str(&text.to_string());
+        new_lines.push_str(&text.to_string().replace("|", "\n"));
         new_lines.push_str("\n\n");
     }
     new_lines
