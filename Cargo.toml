@@ -1,0 +1,9 @@
+[package]
+name = "sub_conv"
+version = "0.1.0"
+authors = ["Mateusz Moneta <mateuszm@fb.com>"]
+
+[dependencies]
+clap = "~2.32.0"
+encoding = "0.2.33"
+regex = "1"
